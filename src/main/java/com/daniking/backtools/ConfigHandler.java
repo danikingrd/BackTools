@@ -15,11 +15,11 @@ import java.util.Set;
 
 @Environment(EnvType.CLIENT)
 public class ConfigHandler {
+    private static final HashSet<Identifier> BELT_TOOLS = new HashSet<>();
     private static final HashMap<Class<?>, Integer> TOOL_ORIENTATIONS = new HashMap<>();
     private static final HashSet<Identifier> ENABLED_TOOLS = new HashSet<>();
     private static final Set<Identifier> DISABLED_TOOLS = new HashSet<>();
     private static boolean HELICOPTER_MODE = false;
-    public static final HashSet<Identifier> BELT_TOOLS = new HashSet<>();
 
     public static int getToolOrientation(@NotNull Item item) {
         return getToolOrientation(item.getClass());
@@ -49,10 +49,8 @@ public class ConfigHandler {
         return item instanceof MiningToolItem || item instanceof SwordItem || item instanceof ShieldItem || item instanceof TridentItem || item instanceof BowItem || item instanceof ShearsItem || item instanceof CrossbowItem || item instanceof FishingRodItem;
     }
 
-    public static  boolean isBeltTool(final Item item) {
-        var itemId = Registries.ITEM.getId(item);
-        ClientSetup.config.beltTools.forEach(beltTool -> BELT_TOOLS.add(new Identifier(beltTool)));
-        return BELT_TOOLS.contains(itemId);
+    public static boolean isBeltTool(final Item item) {
+        return BELT_TOOLS.contains(Registries.ITEM.getId(item));
     }
 
     public static void init() {
@@ -65,6 +63,9 @@ public class ConfigHandler {
             ClientSetup.config.disabledTools.forEach(disabledTool -> DISABLED_TOOLS.add(new Identifier(disabledTool)));
         }
         ConfigHandler.parseOrientation();
+
+        BELT_TOOLS.clear();
+        ClientSetup.config.beltTools.forEach(beltTool -> BELT_TOOLS.add(new Identifier(beltTool)));
 
         // load easter egg setting
         HELICOPTER_MODE = ClientSetup.config.helicopterMode;
