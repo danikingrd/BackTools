@@ -1,4 +1,4 @@
- package com.daniking.backtools;
+package com.daniking.backtools;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class BackTools implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(BackTools.class);
-	public static final String VERSION = "1.20.5-0";
+	public static final String VERSION = "1.21-0";
 
 	@Override
 	public void onInitialize() {
@@ -23,5 +23,4 @@ public class BackTools implements ModInitializer {
 			supplier.get().run();
 		}
 	}
-
 }
