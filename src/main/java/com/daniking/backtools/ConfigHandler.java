@@ -114,7 +114,7 @@ public class ConfigHandler {
         ConfigHandler.parseOffset();
 
         BELT_TOOLS.clear();
-        ClientSetup.config.beltTools.forEach(beltTool -> BELT_TOOLS.add(new Identifier(beltTool)));
+        ClientSetup.config.beltTools.forEach(beltTool -> BELT_TOOLS.add(Identifier.of(beltTool)));
 
         // load easter egg setting
         HELICOPTER_MODE = ClientSetup.config.helicopterMode;

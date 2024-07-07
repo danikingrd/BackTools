@@ -1,7 +1,7 @@
 package com.daniking.backtools;
 
 import net.minecraft.component.ComponentMap;
-import net.minecraft.component.DataComponentType;
+import net.minecraft.component.ComponentType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -32,7 +32,7 @@ public class ToolConfig {
             return false;
         }
 
-        for (DataComponentType<?> key : components.getTypes()) {
+        for (ComponentType<?> key : components.getTypes()) {
             if (!Objects.equals(components.get(key), toCheck.get(key))) {
                 return false;
             }
