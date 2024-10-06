@@ -23,5 +23,4 @@ public class BackTools implements ModInitializer {
 			supplier.get().run();
 		}
 	}
-
 }

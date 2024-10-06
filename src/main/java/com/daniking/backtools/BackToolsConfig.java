@@ -21,8 +21,16 @@ public class BackToolsConfig implements ConfigData {
     public List<String> enabledTools = new ArrayList<>();
     @Comment(value = "Disabled tools, by their resource name. Eg: minecraft:diamond_hoe")
     public List<String> disabledTools = new ArrayList<>();
-    @Comment(value = "Tool orientation, by class file and degrees. Separate with \":\" . See defaults for examples.")
-    public List<String> toolOrientation = Arrays.asList("net.minecraft.item.ToolItem" + ":0", "net.minecraft.item.HoeItem" + ":0", "net.minecraft.item.FishingRodItem" + ":0", "net.minecraft.item.TridentItem" + ":0", "net.minecraft.item.RangedWeaponItem" + ":90");
+    @Comment(value =
+        """
+        Tool orientation, by class file and degrees.
+        Entries starting with "#" are tags (https://minecraft.wiki/w/Tag)
+        Leading namespace (e.g. minecraft:) is optional.
+        Separate with ":" for rotation.
+        Later occurrences of the same item override the previous once (Like in hoes override their config values set in mining).
+        Item types not listed here will default to 0.
+        "See defaults for examples.""")
+    public List<String> toolOrientation = Arrays.asList("#minecraft:enchantable/mining" + ":0", "#minecraft:hoes" + ":0", "#minecraft:enchantable/fishing" + ":0", "#minecraft:enchantable/trident" + ":0", "bow" + ":90", "crossbow" + ":90");
     @Comment(value = "Get in swimming position and your tools go \"Weeee\"")
     public boolean helicopterMode = false;
 }
