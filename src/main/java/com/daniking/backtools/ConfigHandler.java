@@ -25,6 +25,7 @@ public class ConfigHandler {
     private static final Set<Identifier> ENABLED_TOOLS = new HashSet<>();
     private static final Set<Identifier> DISABLED_TOOLS = new HashSet<>();
     private static boolean HELICOPTER_MODE = false;
+    private static boolean RENDER_WITH_CAPES = true;
 
     public static int getToolOrientation(@NotNull Item item) {
         Integer orientation = TOOL_ORIENTATIONS.get(item);
@@ -66,6 +67,8 @@ public class ConfigHandler {
 
         // load easter egg setting
         HELICOPTER_MODE = ClientSetup.config.helicopterMode;
+        //render with capes setting
+        RENDER_WITH_CAPES = ClientSetup.config.renderWithCapes;
     }
 
     private static void parseOrientation() {
@@ -122,4 +125,6 @@ public class ConfigHandler {
     public static boolean isHelicopterModeOn() {
         return HELICOPTER_MODE;
     }
+
+    public static boolean isRenderWithCapesTrue() { return RENDER_WITH_CAPES; }
 }

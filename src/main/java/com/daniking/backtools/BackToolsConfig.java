@@ -33,4 +33,6 @@ public class BackToolsConfig implements ConfigData {
     public List<String> toolOrientation = Arrays.asList("#minecraft:enchantable/mining" + ":0", "#minecraft:hoes" + ":0", "#minecraft:enchantable/fishing" + ":0", "#minecraft:enchantable/trident" + ":0", "bow" + ":90", "crossbow" + ":90");
     @Comment(value = "Get in swimming position and your tools go \"Weeee\"")
     public boolean helicopterMode = false;
+    @Comment(value = "If true, tools render with capes")
+    public boolean renderWithCapes = false;
 }
